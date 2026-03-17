@@ -1,0 +1,18 @@
+# .pre-commit-config.yaml
+# Add envguard schema drift check to your pre-commit hooks.
+#
+# Setup:
+#   pip install pre-commit
+#   pre-commit install
+#
+repos:
+  - repo: local
+    hooks:
+      - id: envguard-diff
+        name: envguard — check schema drift
+        language: system
+        entry: envguard diff
+        args: ["."]
+        pass_filenames: false
+        stages: [commit]
+        types: [python]
